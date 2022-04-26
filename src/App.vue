@@ -8,13 +8,15 @@
         :titolo="element.title"
         :titoloOriginale="element.original_title" 
         :lingua="element.original_language" 
-        :voto="element.vote_average" />
+        :voto="element.vote_average" 
+        :image="element.poster_path"/>
 
       <TvCard v-for="element in serieTvArray" :key="element.id" 
         :SerieTvTitolo="element.name"
         :SerieTvTitoloOriginale="element.original_name" 
         :SerieTvLingua="element.original_language" 
-        :SerieTvVoto="element.vote_average" />
+        :SerieTvVoto="element.vote_average" 
+        :SerieTvImage="element.poster_path"/>
     </main>
 
 
@@ -77,5 +79,8 @@
 </script>
 
 <style lang="scss">
+main{
+  background-color: rgb(106, 106, 192);
+}
 
 </style>
