@@ -30,7 +30,8 @@
             SerieTvTitoloOriginale: String,
             SerieTvLingua: String,
             SerieTvVoto: Number,
-            SerieTvImage: String
+            SerieTvImage: String,
+            SerieTvDescrizione: String
         } 
     }
 </script>

@@ -4,19 +4,9 @@
       <HeaderComp @filmCercato="metodoFilm" />
     </header>
     <main>
-      <FilmCard v-for="element in filmArray" :key="element.id" 
-        :titolo="element.title"
-        :titoloOriginale="element.original_title" 
-        :lingua="element.original_language" 
-        :voto="element.vote_average" 
-        :image="element.poster_path"/>
-
-      <TvCard v-for="element in serieTvArray" :key="element.id" 
-        :SerieTvTitolo="element.name"
-        :SerieTvTitoloOriginale="element.original_name" 
-        :SerieTvLingua="element.original_language" 
-        :SerieTvVoto="element.vote_average" 
-        :SerieTvImage="element.poster_path"/>
+      <MainComp 
+      :arrayFilms="filmArray"
+      :arraySerieTv="serieTvArray"/>    
     </main>
 
 
@@ -26,16 +16,16 @@
 <script>
   import axios from 'axios'
   import HeaderComp from './components/HeaderComp.vue'
-  import FilmCard from './components/FilmCard.vue'
-  import TvCard from './components/TvCard.vue'
+  import MainComp from './components/MainComp.vue'
+  
 
 
   export default {
     name: 'App',
     components: {
       HeaderComp,
-      FilmCard,
-      TvCard
+      MainComp
+     
     },
 
     // data
@@ -79,8 +69,14 @@
 </script>
 
 <style lang="scss">
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 main{
   background-color: rgb(106, 106, 192);
 }
+
 
 </style>
