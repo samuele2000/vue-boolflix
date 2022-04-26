@@ -6,7 +6,7 @@
         </div>
         <div class="search">
             <form>
-                <input type="text"  placeholder="scrivi il film" v-model="selectFilm">
+                <input type="text"  placeholder="scrivi il film" v-model="selectFilm" @keydown.enter.prevent="$emit('filmCercato', selectFilm)">
             </form>
             <button type="button" @click.prevent="$emit('filmCercato', selectFilm)">Cerca</button>
         </div>
