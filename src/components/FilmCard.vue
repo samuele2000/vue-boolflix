@@ -1,32 +1,34 @@
 <template>
-    <div class="container" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${image})` }">
-        <div class="informazioni">
-          <div>
-                <span>Titolo:</span>
-                <span>{{titolo}}</span>
+    <div class="flip-card my-3 mx-3">
+        <div class="flip-card-inner">
+            <div class="flip-card-front" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${image})` }"></div>
+            <div class="flip-card-back p-3 overflow-auto">
+                <div class="d-flex align-items-baseline">
+                    <h4 class="fs-5">Titolo:</h4>
+                    <span class="fs-6 ms-1">{{titolo}}</span>
+                </div>
+                <div :class="(titoloOriginale == titolo) ? 'd-none' : ''" >
+                    <span class="fs-5 fw-bold">Titolo orignale:</span>
+                    <span class="fs-5">{{titoloOriginale}}</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <h2 class="fs-5">Lingua:</h2>
+                    <span :class=" (lingua === 'en') ? 'eng-flag' : (lingua === 'it') ? 'ita-flag' : 'random-flag'"
+                        class="flag ms-1">
+                    </span>
+                </div>
+                <div>
+                    <h4 class="fs-5 ">Voto:</h4>
+                    <p :class="(voto >= 1 && voto < 2 ) ? 'una-star' : (voto >= 2 && voto < 4 ) ? 'due-star' : (voto >= 4 && voto < 6) ? 'tre-star' : (voto >= 6 && voto < 8 ) ?     'quattro-star' : (voto >= 8 && voto <= 10) ? 'cinque-star' : 'zero-star'"
+                        class="star">
+                    </p>
+                </div>
+                <div :class="(descrizione == '') ? 'd-none' : ''">
+                    <h4 class="fs-5">Descrizione:</h4>
+                    <p>{{descrizione}}</p>
+                </div>
             </div>
-            <div :class="(titoloOriginale == titolo) ? 'd-none' : ''">
-                <span>Titolo orignale:</span>
-                <span>{{titoloOriginale}}</span>
-            </div>
-            <div>
-                <span>Lingua:</span>
-                <h2 :class=" (lingua === 'en') ? 'eng-flag' : (lingua === 'it') ? 'ita-flag' : 'random-flag'"
-                    class="flag">
-                </h2>
-            </div>
-            <div>
-                <span>Voto</span>
-                <h2 :class="(voto >= 1 && voto < 2 ) ? 'una-star' : (voto >= 2 && voto < 4 ) ? 'due-star' : (voto >= 4 && voto < 6) ? 'tre-star' : (voto >= 6 && voto < 8 ) ?     'quattro-star' : (voto >= 8 && voto <= 10) ? 'cinque-star' : 'zero-star'"
-                    class="star">
-                </h2>
-            </div>
-            <div :class="(descrizione == '') ? 'd-none' : ''">
-                <span>Descrizione</span>
-                <p>{{descrizione}}</p>
-            </div>  
         </div>
-            
     </div>
 </template>
 
@@ -48,16 +50,51 @@
 <style scoped lang="scss">
     /*Inserire style componente*/
     //stile card 
-    .container {
+    .flip-card {
+        background-color: transparent;
+        width: calc(100% / 5);
+        height: 410px;
+        perspective: 1000px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        /* Safari */
+        backface-visibility: hidden;
+    }
+
+    .flip-card-front {
+        background-size: contain;
+        background-position: center;
+    }
+
+    .flip-card-back {
+        background-color: rgb(0, 0, 0);
         color: white;
-        width: calc(100% / 4);
-        height: 400px;
-        padding: 10px;
-        background-size: cover;
-        } 
-    p{
-        overflow-y: hidden;
-    }    
+        transform: rotateY(180deg);
+        // overflow-y: auto;
+    }
+
+
+    //fine stile card
+
+
     .d-none {
         display: none;
     }
@@ -67,7 +104,7 @@
         width: 48px;
         height: 48px;
         background-repeat: no-repeat;
-        background-size:contain
+        background-size: contain
     }
 
     .ita-flag {

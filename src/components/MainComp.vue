@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="containers">
         <!--inserire contenuto componente-->
-        <div class="films">
+        <div class="row justify-content-between py-5">
+            <h2 class="fw-bold text-light"
+            :class="( this.arrayFilms == '' ) ? 'd-none' : ''">FILM</h2>
             <FilmCard v-for="element in arrayFilms" :key="element.id" 
                 :titolo="element.title"
                 :titoloOriginale="element.original_title" 
@@ -43,9 +45,14 @@
 
 <style scoped lang="scss">
     /*Inserire style componente*/
-    .films{
-        display: flex;
-        flex-wrap: wrap;
+    .containers{
+        width: 95%;
+        margin: 0 auto;
+        .row>*{
+            padding: 0 !important;
+        }
     }
-    
+    .d-none{
+        display: none;
+    }
 </style>
