@@ -1,31 +1,31 @@
 <template>
     <div class="flip-card my-3 mx-4">
-        <div class="flip-card-inner">
+        <div class="flip-card-inner d-flex flex-column justify-content-between">
             <div class="flip-card-front" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${image})` }">
                 <h4 :class="( `${image}` == null ) ? 'd-block' : ''" class="non-disp">IMMAGINE NON DISPONIBILE</h4>
             </div>
             <div class="flip-card-back p-3 overflow-auto">
-                <div class="d-flex align-items-baseline">
+                <div class="d-flex align-items-baseline my-1">
                     <h4 class="fs-5">Titolo:</h4>
                     <span class="fs-6 ms-1">{{titolo}}</span>
                 </div>
-                <div :class="(titoloOriginale == titolo) ? 'd-none' : ''" >
-                    <span class="fs-5 fw-bold">Titolo orignale:</span>
-                    <span class="fs-5">{{titoloOriginale}}</span>
+                <div :class="(titoloOriginale == titolo) ? 'd-none' : ''" class="my-1">
+                    <span class="fs-5">Titolo orignale:</span>
+                    <span class="fs-6 ms-1">{{titoloOriginale}}</span>
                 </div>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center my-1">
                     <h2 class="fs-5">Lingua:</h2>
                     <span :class=" (lingua === 'en') ? 'eng-flag' : (lingua === 'it') ? 'ita-flag' : 'random-flag'"
                         class="flag ms-1">
                     </span>
                 </div>
-                <div>
+                <div class="my-1">
                     <h4 class="fs-5 ">Voto:</h4>
                     <p :class="(voto >= 1 && voto < 2 ) ? 'una-star' : (voto >= 2 && voto < 4 ) ? 'due-star' : (voto >= 4 && voto < 6) ? 'tre-star' : (voto >= 6 && voto < 8 ) ?     'quattro-star' : (voto >= 8 && voto <= 10) ? 'cinque-star' : 'zero-star'"
                         class="star">
                     </p>
                 </div>
-                <div :class="(descrizione == '') ? 'd-none' : ''">
+                <div :class="(descrizione == '') ? 'd-none' : ''" class="my-1">
                     <h4 class="fs-5">Descrizione:</h4>
                     <p>{{descrizione}}</p>
                 </div>

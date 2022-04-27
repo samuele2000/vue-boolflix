@@ -1,31 +1,31 @@
 <template>
     <div class="flip-card my-3 mx-4">
-        <div class="flip-card-inner">
-            <div class="flip-card-front" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${SerieTvImage})` }">
+        <div class="flip-card-inner d-flex flex-column justify-content-between">
+            <div class="flip-card-front my-1" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${SerieTvImage})` }">
                 <h4 :class="( SerieTvImage == null ) ? 'd-block' : ''" class="non-disp">IMMAGINE NON DISPONIBILE</h4>
             </div>
             <div class="flip-card-back p-3 overflow-auto">
-                <div class="d-flex align-items-baseline">
+                <div class="d-flex align-items-baseline my-1">
                     <h4 class="fs-5">Titolo:</h4>
                     <span class="fs-6 ms-1">{{SerieTvTitolo}}</span>
                 </div>
-                <div :class="(SerieTvTitoloOriginale == SerieTvTitolo) ? 'd-none' : ''" >
-                    <span class="fs-5 fw-bold">Titolo orignale:</span>
-                    <span class="fs-5">{{SerieTvTitoloOriginale}}</span>
+                <div :class="(SerieTvTitoloOriginale == SerieTvTitolo) ? 'd-none' : ''" class="my-1">
+                    <span class="fs-5">Titolo orignale:</span>
+                    <span class="fs-6 ms-1">{{SerieTvTitoloOriginale}}</span>
                 </div>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center my-1">
                     <h2 class="fs-5">Lingua:</h2>
                     <span :class=" (SerieTvLingua === 'en') ? 'eng-flag' : (SerieTvLingua === 'it') ? 'ita-flag' : 'random-flag'"
                         class="flag ms-1">
                     </span>
                 </div>
-                <div>
+                <div class="my-1">
                     <h4 class="fs-5 ">Voto:</h4>
                     <p :class="(SerieTvVoto >= 1 && SerieTvVoto < 2 ) ? 'una-star' : (SerieTvVoto >= 2 && SerieTvVoto < 4 ) ? 'due-star' : (SerieTvVoto >= 4 && SerieTvVoto < 6) ? 'tre-star' : (SerieTvVoto >= 6 && SerieTvVoto < 8 ) ?     'quattro-star' : (SerieTvVoto >= 8 && SerieTvVoto <= 10) ? 'cinque-star' : 'zero-star'"
                         class="star">
                     </p>
                 </div>
-                <div :class="(SerieTvDescrizione == '') ? 'd-none' : ''">
+                <div :class="(SerieTvDescrizione == '') ? 'd-none' : ''" class="my-1">
                     <h4 class="fs-5">Descrizione:</h4>
                     <p>{{SerieTvDescrizione}}</p>
                 </div>

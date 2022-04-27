@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <header>
       <HeaderComp @filmCercato="metodoFilm" />
     </header>
@@ -74,9 +74,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-main{
-  background-color: rgb(106, 106, 192);
+#app{
+  background-color: #1B1B1B;
 }
+header{
+  height: 10vh;
+}
+main{
+  height: 90vh;
+  overflow-y: auto;
+}
+::-webkit-scrollbar{
+            display: none;
+        }
+
 
 
 </style>

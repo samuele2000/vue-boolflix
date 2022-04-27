@@ -2,7 +2,7 @@
     <div class="containers">
         <!--inserire contenuto componente-->
         <div class="row py-5 justify-content-around">
-            <h2 class="fw-bold text-light"
+            <h2 class="fw-bold text-light fs-3 ms-4"
             :class="( this.arrayFilms == '' ) ? 'd-none' : ''">FILM</h2>
             <FilmCard v-for="element in arrayFilms" :key="element.id" 
                 :titolo="element.title"
@@ -13,7 +13,7 @@
                 :descrizione="element.overview" />
         </div>
         <div class="row py-5 justify-content-around">
-            <h2 class="fw-bold text-light"
+            <h2 class="fw-bold text-light fs-3 ms-4"
             :class="( this.arraySerieTv == '' ) ? 'd-none' : ''">SERIE TV</h2>
             <TvCard v-for="element in arraySerieTv" :key="element.id" 
                 :SerieTvTitolo="element.name"
