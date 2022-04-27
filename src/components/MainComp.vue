@@ -1,7 +1,7 @@
 <template>
     <div class="containers">
         <!--inserire contenuto componente-->
-        <div class="row justify-content-between py-5">
+        <div class="row py-5 justify-content-around">
             <h2 class="fw-bold text-light"
             :class="( this.arrayFilms == '' ) ? 'd-none' : ''">FILM</h2>
             <FilmCard v-for="element in arrayFilms" :key="element.id" 
@@ -12,7 +12,9 @@
                 :image="element.poster_path" 
                 :descrizione="element.overview" />
         </div>
-        <!-- <div>
+        <div class="row py-5 justify-content-around">
+            <h2 class="fw-bold text-light"
+            :class="( this.arraySerieTv == '' ) ? 'd-none' : ''">SERIE TV</h2>
             <TvCard v-for="element in arraySerieTv" :key="element.id" 
                 :SerieTvTitolo="element.name"
                 :SerieTvTitoloOriginale="element.original_name" 
@@ -20,19 +22,19 @@
                 :SerieTvVoto="element.vote_average" 
                 :SerieTvImage="element.poster_path"
                 :SerieTvDescrizione="element.overview" />
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script>
     import FilmCard from './FilmCard.vue'
-    //import TvCard from './TvCard.vue'
+    import TvCard from './TvCard.vue'
     export default {
         //Cambiare il nome con quello del componente creato
         name: 'MainComp',
         components: {
             FilmCard,
-            // TvCard
+            TvCard
         },
         props: {
             arrayFilms: Array,

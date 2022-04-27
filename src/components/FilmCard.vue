@@ -1,7 +1,9 @@
 <template>
-    <div class="flip-card my-3 mx-3">
+    <div class="flip-card my-3 mx-4">
         <div class="flip-card-inner">
-            <div class="flip-card-front" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${image})` }"></div>
+            <div class="flip-card-front" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${image})` }">
+                <h4 :class="( `${image}` == null ) ? 'd-block' : ''" class="non-disp">IMMAGINE NON DISPONIBILE</h4>
+            </div>
             <div class="flip-card-back p-3 overflow-auto">
                 <div class="d-flex align-items-baseline">
                     <h4 class="fs-5">Titolo:</h4>
@@ -48,53 +50,24 @@
 </script>
 
 <style scoped lang="scss">
+@import '../style/mixin.scss';
     /*Inserire style componente*/
     //stile card 
-    .flip-card {
-        background-color: transparent;
-        width: calc(100% / 5);
-        height: 410px;
-        perspective: 1000px;
-    }
-
-    .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.8s;
-        transform-style: preserve-3d;
-    }
-
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        -webkit-backface-visibility: hidden;
-        /* Safari */
-        backface-visibility: hidden;
-    }
-
-    .flip-card-front {
-        background-size: contain;
-        background-position: center;
-    }
-
-    .flip-card-back {
-        background-color: rgb(0, 0, 0);
-        color: white;
-        transform: rotateY(180deg);
-        // overflow-y: auto;
-    }
-
-
+    @include flipCard;
     //fine stile card
 
-
+    .non-disp{
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        display: none;
+    }
+    .d-block{
+        display: block;
+    }
     .d-none {
         display: none;
     }
